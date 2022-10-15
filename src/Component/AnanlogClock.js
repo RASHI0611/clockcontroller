@@ -11,8 +11,7 @@ class App extends Component {
     secondRatio: 0,
     minuteRatio: 0,
     hourRatio: 0,
-    currentDate: new Date(),
-    interval: {},
+    timeField: '',
     setDate: new Date(),
     customTimer: {
       min: new Date().getMinutes(),
@@ -44,8 +43,7 @@ class App extends Component {
 
   Submit = (e) => {
     e.preventDefault();
-
-    this.setState({ customTimer: { hour: e.target[0].value.substr(0, 2), min: e.target[0].value.substr(-2), sec: 0 } })
+    this.setState({ customTimer: { hour: e.target[0].value.substr(0, 2), min: e.target[0].value.substr(-2), sec: 0 }, timeField: '' })
 
   }
 
@@ -63,12 +61,13 @@ class App extends Component {
 
   render() {
     const { secondRatio, minuteRatio, hourRatio } = this.state
+    console.log(this.state.timeField)
     return (
       <div>
         <Clock secondRatio={secondRatio} minuteRatio={minuteRatio} hourRatio={hourRatio} />
         <form onSubmit={this.Submit}>
           <label>Choose an time:</label>
-          <input id="" type="time" className='from-control' onChange={this.setTimeValue} name='customTime' />
+          <input id="" type="time" className='from-control' onChange={(e) => this.setState({ timeField: e.target.value })} name='customTime' value={this.state.timeField} />
           <button>submit</button>
         </form>
       </div>
