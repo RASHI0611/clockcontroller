@@ -1,43 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import AnanlogClock from '../Component/AnanlogClock'
+import React from 'react'
 
 function Clock({ hourRatio, minuteRatio, secondRatio }) {
-    const [clocktime, setClockTime] = useState("")
-    const [condition, setCondition] = useState(1);
-    const [currentDate, setCurrentDate] = useState(new Date());
-
-    let interval = undefined;
-
-    // console.log(secondRatio)
-
-
-
-    // const setTimeValue = (e) =>{
-    //     interval=(e.target.value)
-    // }
-
-    // const Submit = (e) => {
-    //     e.preventDefault();
-    //     setCondition(2);
-
-    //     clearInterval(interval);
-    // }
-
-    useEffect(() => {
-        switch (condition) {
-            case 1:
-                interval = setInterval(() => setCurrentDate(new Date()), 1000)
-                break;
-            case 2:
-                const currentDay = `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()} ${clocktime}:00`
-                interval = setInterval(() => setCurrentDate(new Date(currentDay)), 1000);
-                break;
-        }
-        return () => {
-            clearInterval(interval);
-        }
-    }, [condition])
-
+       
     return (
 
         <div className="clock">
